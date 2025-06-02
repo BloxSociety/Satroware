@@ -1,0 +1,2 @@
+# Satroware
+Simple Text Editor.
