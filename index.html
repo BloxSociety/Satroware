@@ -63,36 +63,13 @@
     <button onclick="loadFile()">Load</button>
     <button onclick="downloadFile()">Download</button>
   </div>
-  <textarea id="editor"></textarea>  <script src="https://unpkg.com/codemirror@5.65.14/lib/codemirror.js"></script>  <script src="https://unpkg.com/codemirror@5.65.14/mode/javascript/javascript.js"></script>  <script src="https://unpkg.com/codemirror@5.65.14/mode/htmlmixed/htmlmixed.js"></script>  <script src="https://unpkg.com/codemirror@5.65.14/mode/css/css.js"></script>  <script src="https://unpkg.com/codemirror@5.65.14/mode/xml/xml.js"></script>  <script src="https://unpkg.com/codemirror@5.65.14/mode/markdown/markdown.js"></script>  <script src="https://unpkg.com/codemirror@5.65.14/mode/python/python.js"></script>  <script src="https://unpkg.com/codemirror@5.65.14/mode/sql/sql.js"></script>  <script src="https://unpkg.com/codemirror@5.65.14/mode/javascript/javascript.js"></script>  <script src="https://unpkg.com/codemirror@5.65.14/mode/javascript/javascript.js"></script>  <script src="https://unpkg.com/codemirror@5.65.14/mode/javascript/javascript.js"></script>  <script src="https://unpkg.com/codemirror@5.65.14/mode/javascript/javascript.js"></script>  <script src="https://unpkg.com/codemirror@5.65.14/addon/edit/matchbrackets.js"></script>  <script src="https://unpkg.com/codemirror@5.65.14/addon/hint/show-hint.js"></script>  <script>
-    let editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
+  <textarea id="editor"></textarea>  <script src="https://unpkg.com/codemirror@5.65.14/lib/codemirror.js"></script>  <script src="https://unpkg.com/codemirror@5.65.14/mode/javascript/javascript.js"></script>  <script src="https://unpkg.com/codemirror@5.65.14/mode/htmlmixed/htmlmixed.js"></script>  <script src="https://unpkg.com/codemirror@5.65.14/mode/css/css.js"></script>  <script src="https://unpkg.com/codemirror@5.65.14/mode/xml/xml.js"></script>  <script src="https://unpkg.com/codemirror@5.65.14/mode/markdown/markdown.js"></script>  <script src="https://unpkg.com/codemirror@5.65.14/mode/python/python.js"></script>  <script src="https://unpkg.com/codemirror@5.65.14/mode/sql/sql.js"></script>  <script src="https://unpkg.com/codemirror@5.65.14/mode/javascript/javascript.js"></script>  <script src="https://unpkg.com/codemirror@5.65.14/addon/edit/matchbrackets.js"></script>  <script src="https://unpkg.com/codemirror@5.65.14/addon/hint/show-hint.js"></script>  <script>
+    const editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
       lineNumbers: true,
       mode: "htmlmixed",
       matchBrackets: true,
       theme: "default",
       extraKeys: {"Ctrl-Space": "autocomplete"}
-    });
-
-    const typoFixes = {
-      "<scrpt>": "<script>",
-      "<styel>": "<style>",
-      "funciton": "function",
-      "documnet": "document",
-      "retun": "return",
-      "cosnole": "console",
-      "innerHMTL": "innerHTML",
-      "setTimout": "setTimeout",
-      "aler": "alert",
-      "addEvenListener": "addEventListener"
-    };
-
-    editor.on("change", () => {
-      let content = editor.getValue();
-      for (let typo in typoFixes) {
-        const fix = typoFixes[typo];
-        const regex = new RegExp(typo, "g");
-        content = content.replace(regex, fix);
-      }
-      editor.setValue(content);
     });
 
     document.getElementById("language").addEventListener("change", (e) => {
@@ -127,4 +104,4 @@
       URL.revokeObjectURL(url);
     }
   </script></body>
-        </html>
+</html>
